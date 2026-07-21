@@ -80,7 +80,161 @@ st.markdown("""
 # ==========================================
 # PREMIUM CSS
 # ==========================================
+st.markdown("""
+<style>
 
+/* =========================
+   PREMIUM COFFEE THEME
+========================= */
+
+.stApp{
+    background:linear-gradient(135deg,#140d08,#2d1a0f,#5a3820);
+    color:#ffffff;
+}
+
+/* Main Container */
+.main .block-container{
+    max-width:1400px;
+    padding:20px 35px;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"]{
+    background:#1b120a;
+    border-right:2px solid #D4AF37;
+}
+
+section[data-testid="stSidebar"] *{
+    color:white !important;
+}
+
+/* Headers */
+h1,h2,h3{
+    color:#D4AF37;
+    font-weight:bold;
+}
+
+/* Buttons */
+.stButton>button{
+    width:100%;
+    background:#D4AF37;
+    color:#1b120a;
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.stButton>button:hover{
+    background:#FFD700;
+    transform:scale(1.03);
+}
+
+/* Inputs */
+.stTextInput input,
+.stNumberInput input,
+.stTextArea textarea{
+    border-radius:10px;
+    border:2px solid #D4AF37;
+    background:#2d1a0f;
+    color:white;
+}
+
+/* Selectbox */
+.stSelectbox div[data-baseweb="select"]{
+    border-radius:10px;
+}
+
+/* Metric Cards */
+div[data-testid="metric-container"]{
+    background:#2d1a0f;
+    border:2px solid #D4AF37;
+    border-radius:15px;
+    padding:15px;
+}
+
+/* Dataframe */
+[data-testid="stDataFrame"]{
+    border-radius:12px;
+    overflow:hidden;
+}
+
+/* Images */
+img{
+    border-radius:15px;
+    width:100%;
+    height:auto;
+}
+
+/* File Uploader */
+[data-testid="stFileUploader"]{
+    border:2px dashed #D4AF37;
+    border-radius:15px;
+}
+
+/* Success */
+.stSuccess{
+    border-radius:10px;
+}
+
+/* Warning */
+.stWarning{
+    border-radius:10px;
+}
+
+/* Info */
+.stInfo{
+    border-radius:10px;
+}
+
+/* =========================
+      MOBILE
+========================= */
+
+@media (max-width:768px){
+
+.main .block-container{
+    padding:10px;
+}
+
+section[data-testid="stSidebar"]{
+    min-width:240px !important;
+}
+
+h1{
+    font-size:28px !important;
+}
+
+h2{
+    font-size:22px !important;
+}
+
+h3{
+    font-size:18px !important;
+}
+
+.stButton>button{
+    font-size:15px;
+    padding:10px;
+}
+
+}
+
+/* =========================
+      LARGE SCREEN
+========================= */
+
+@media (min-width:1400px){
+
+.main .block-container{
+    max-width:1500px;
+}
+
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 # ==========================================
