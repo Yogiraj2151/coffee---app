@@ -468,24 +468,143 @@ def load_menu():
 # HOME PAGE
 # ==========================================
 
-if page == "🏠 Home":
+elif page == "🏠 Home":
 
     st.markdown(
-        "<h1 class='title'>☕ Brew & Bean Coffee</h1>",
+        "<div class='title'>☕ Brew & Bean Coffee</div>",
         unsafe_allow_html=True
     )
 
+    st.markdown(
+        "<div class='subtitle'>Fresh Coffee • Fresh Moments • Every Cup Tells A Story</div>",
+        unsafe_allow_html=True
+    )
 
-    st.markdown("""
-    <div class="card">
+    st.write("")
 
-    Welcome to Brew & Bean Coffee ☕
+    col1, col2 = st.columns([2,1])
 
-    Fresh Coffee | Premium Taste | Fast Service
+    with col1:
 
-    </div>
-    """,
-    unsafe_allow_html=True)
+        st.markdown("""
+        <div style='
+            background:rgba(255,255,255,.08);
+            padding:25px;
+            border-radius:20px;
+            border:1px solid gold;
+            box-shadow:0 10px 25px black;
+        '>
+
+        <h2>Welcome To Brew & Bean ☕</h2>
+
+        <p style='font-size:18px;'>
+
+        ✔ Premium Coffee<br>
+        ✔ Organic Beans<br>
+        ✔ Fresh Desserts<br>
+        ✔ Fast Service<br>
+        ✔ Free Wi-Fi
+
+        </p>
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.write("")
+
+        if st.button(
+            "☕ Order Now",
+            key="home_order_btn"
+        ):
+            st.success("Open Menu Page From Sidebar")
+
+    with col2:
+
+        st.image(
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+            use_container_width=True
+        )
+
+    st.divider()
+
+    st.subheader("🔥 Best Sellers")
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+
+        st.markdown("""
+        <div style='
+            background:rgba(255,255,255,.08);
+            padding:20px;
+            border-radius:18px;
+            text-align:center;
+            border:1px solid gold;
+        '>
+
+        <h2>☕ Espresso</h2>
+
+        <h3 style='color:gold;'>₹150</h3>
+
+        ⭐⭐⭐⭐⭐
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c2:
+
+        st.markdown("""
+        <div style='
+            background:rgba(255,255,255,.08);
+            padding:20px;
+            border-radius:18px;
+            text-align:center;
+            border:1px solid gold;
+        '>
+
+        <h2>☕ Cappuccino</h2>
+
+        <h3 style='color:gold;'>₹180</h3>
+
+        ⭐⭐⭐⭐⭐
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c3:
+
+        st.markdown("""
+        <div style='
+            background:rgba(255,255,255,.08);
+            padding:20px;
+            border-radius:18px;
+            text-align:center;
+            border:1px solid gold;
+        '>
+
+        <h2>☕ Latte</h2>
+
+        <h3 style='color:gold;'>₹220</h3>
+
+        ⭐⭐⭐⭐⭐
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.divider()
+
+    a, b, c, d = st.columns(4)
+
+    a.metric("☕ Coffee", "30+")
+    b.metric("🍰 Desserts", "20+")
+    c.metric("😊 Customers", "12K+")
+    d.metric("⭐ Rating", "4.9 / 5")
+
+    st.divider()
+
+    st.info("⏰ Open Daily : 9:00 AM - 10:00 PM")
+
+    st.success("📍 Pune, Maharashtra")
 
 
 
