@@ -1,5 +1,5 @@
-streamlit
-supabase
-python-dotenv
-pandas
-pillowg
+streamlit==1.59.2
+supabase==2.31.0
+python-dotenv==1.2.2
+pandas==3.0.3
+Pillow==11.3.0
