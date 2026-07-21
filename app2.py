@@ -468,7 +468,7 @@ def load_menu():
 # HOME PAGE
 # ==========================================
 
-elif page == "🏠 Home":
+if page == "🏠 Home":
 
     st.markdown(
         "<div class='title'>☕ Brew & Bean Coffee</div>",
