@@ -80,27 +80,27 @@ st.markdown("""
 # ==========================================
 # PREMIUM CSS
 # ==========================================
+import streamlit as st
+
 st.markdown("""
 <style>
 
-/* =========================
-   PREMIUM COFFEE THEME
-========================= */
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.stApp{
-    background:linear-gradient(135deg,#140d08,#2d1a0f,#5a3820);
-    color:#ffffff;
+html, body, [class*="css"]{
+    font-family:'Poppins',sans-serif;
 }
 
-/* Main Container */
-.main .block-container{
-    max-width:1400px;
-    padding:20px 35px;
+/* Background */
+.stApp{
+    background:linear-gradient(135deg,#090909,#141414,#1f1f1f);
+    color:white;
 }
 
 /* Sidebar */
 section[data-testid="stSidebar"]{
-    background:#1b120a;
+    background:linear-gradient(180deg,#111111,#1c1c1c);
     border-right:2px solid #D4AF37;
 }
 
@@ -108,136 +108,159 @@ section[data-testid="stSidebar"] *{
     color:white !important;
 }
 
-/* Headers */
-h1,h2,h3{
-    color:#D4AF37;
-    font-weight:bold;
+/* Main Container */
+.block-container{
+    background:rgba(20,20,20,.55);
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:20px;
+    padding:2rem;
+    box-shadow:0 0 25px rgba(212,175,55,.18);
+}
+
+/* Headings */
+h1,h2,h3,h4,h5,h6{
+    color:#FFD700;
+    font-weight:700;
 }
 
 /* Buttons */
 .stButton>button{
     width:100%;
-    background:#D4AF37;
-    color:#1b120a;
+    background:linear-gradient(90deg,#D4AF37,#FFD700);
+    color:black;
     border:none;
     border-radius:12px;
     padding:12px;
+    font-size:16px;
     font-weight:bold;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .stButton>button:hover{
-    background:#FFD700;
-    transform:scale(1.03);
+    transform:translateY(-3px);
+    box-shadow:0 0 20px gold;
 }
 
-/* Inputs */
+/* Text Input */
 .stTextInput input,
 .stNumberInput input,
 .stTextArea textarea{
-    border-radius:10px;
-    border:2px solid #D4AF37;
-    background:#2d1a0f;
+    background:#222;
     color:white;
+    border:2px solid #D4AF37;
+    border-radius:10px;
 }
 
 /* Selectbox */
 .stSelectbox div[data-baseweb="select"]{
+    background:#222;
     border-radius:10px;
+    border:2px solid #D4AF37;
 }
 
-/* Metric Cards */
-div[data-testid="metric-container"]{
-    background:#2d1a0f;
+/* DataFrame */
+[data-testid="stDataFrame"]{
     border:2px solid #D4AF37;
     border-radius:15px;
-    padding:15px;
+    overflow:hidden;
 }
 
-/* Dataframe */
-[data-testid="stDataFrame"]{
-    border-radius:12px;
-    overflow:hidden;
+/* Metric */
+[data-testid="metric-container"]{
+    background:#181818;
+    border:1px solid #D4AF37;
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0 0 15px rgba(212,175,55,.2);
+}
+
+/* Cards */
+.card{
+    background:#181818;
+    border:1px solid #D4AF37;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 0 20px rgba(212,175,55,.2);
+}
+
+/* Success */
+.stSuccess{
+    background:#0d2818;
+    border-left:6px solid #00ff88;
+}
+
+/* Warning */
+.stWarning{
+    background:#3a2800;
+    border-left:6px solid orange;
+}
+
+/* Error */
+.stError{
+    background:#330000;
+    border-left:6px solid red;
+}
+
+/* Info */
+.stInfo{
+    background:#001d33;
+    border-left:6px solid #00bfff;
+}
+
+/* Tables */
+table{
+    border-collapse:collapse;
+}
+
+thead{
+    background:#D4AF37;
+    color:black;
+}
+
+tbody tr:nth-child(even){
+    background:#1f1f1f;
 }
 
 /* Images */
 img{
     border-radius:15px;
-    width:100%;
-    height:auto;
+    border:2px solid #D4AF37;
 }
 
-/* File Uploader */
-[data-testid="stFileUploader"]{
-    border:2px dashed #D4AF37;
-    border-radius:15px;
+/* Scrollbar */
+::-webkit-scrollbar{
+    width:10px;
 }
 
-/* Success */
-.stSuccess{
+::-webkit-scrollbar-thumb{
+    background:#D4AF37;
     border-radius:10px;
 }
 
-/* Warning */
-.stWarning{
-    border-radius:10px;
-}
+/* Responsive */
+@media(max-width:768px){
 
-/* Info */
-.stInfo{
-    border-radius:10px;
-}
-
-/* =========================
-      MOBILE
-========================= */
-
-@media (max-width:768px){
-
-.main .block-container{
-    padding:10px;
-}
-
-section[data-testid="stSidebar"]{
-    min-width:240px !important;
+.block-container{
+    padding:1rem;
 }
 
 h1{
-    font-size:28px !important;
-}
-
-h2{
-    font-size:22px !important;
-}
-
-h3{
-    font-size:18px !important;
+    font-size:28px;
 }
 
 .stButton>button{
     font-size:15px;
-    padding:10px;
 }
 
-}
-
-/* =========================
-      LARGE SCREEN
-========================= */
-
-@media (min-width:1400px){
-
-.main .block-container{
-    max-width:1500px;
+section[data-testid="stSidebar"]{
+    width:100% !important;
 }
 
 }
 
 </style>
 """, unsafe_allow_html=True)
-
-
-# ==========================================
+==============
 # SIDEBAR
 # ==========================================
 
