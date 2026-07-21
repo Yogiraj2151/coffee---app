@@ -260,7 +260,7 @@ section[data-testid="stSidebar"]{
 
 </style>
 """, unsafe_allow_html=True)
-==============
+
 # SIDEBAR
 # ==========================================
 
