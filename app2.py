@@ -1064,6 +1064,32 @@ elif page == "👤 My Account":
             "Please Login First"
         
         )
+elif page == "📞 Contact":
+
+    st.markdown(
+        "<div class='title'>📞 Contact Us</div>",
+        unsafe_allow_html=True
+    )
+
+    st.info("""
+📍 **Address**
+Pune, Maharashtra
+
+📞 **Phone**
++91 9876543210
+
+📧 **Email**
+brewbean@gmail.com
+
+🕘 **Opening Hours**
+9:00 AM – 10:00 PM
+""")
+
+    st.map(pd.DataFrame({
+        "lat": [18.5204],
+        "lon": [73.8567]
+    }))
+        
 # ==========================================
 # ADMIN DASHBOARD
 # ==========================================
