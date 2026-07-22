@@ -42,6 +42,46 @@ defaults = {
 for key, value in defaults.items():
     if key not in st.session_state:
         st.session_state[key] = value
+    if "page" not in st.session_state:
+     st.session_state.page = "🏠 Home"
+
+st.markdown("## ☕ Brew & Bean Coffee")
+
+c1,c2,c3,c4,c5,c6,c7,c8 = st.columns(8)
+
+with c1:
+    if st.button("🏠 Home", use_container_width=True):
+        st.session_state.page = "🏠 Home"
+
+with c2:
+    if st.button("📖 Menu", use_container_width=True):
+        st.session_state.page = "📖 Menu"
+
+with c3:
+    if st.button("🛒 Cart", use_container_width=True):
+        st.session_state.page = "🛒 Cart"
+
+with c4:
+    if st.button("💳 Payment", use_container_width=True):
+        st.session_state.page = "💳 Payment"
+
+with c5:
+    if st.button("📝 Signup", use_container_width=True):
+        st.session_state.page = "📝 Signup"
+
+with c6:
+    if st.button("👤 My Account", use_container_width=True):
+        st.session_state.page = "👤 My Account"
+
+with c7:
+    if st.button("📞 Contact", use_container_width=True):
+        st.session_state.page = "📞 Contact"
+
+with c8:
+    if st.button("👨‍💼 Admin", use_container_width=True):
+        st.session_state.page = "👨‍💼 Admin"
+
+page = st.session_state.page    
 
 # ==========================================
 # CREATE DEFAULT ADMIN
@@ -267,28 +307,7 @@ section[data-testid="stSidebar"]{
 
 
 
-st.sidebar.title(
-    "☕ Brew & Bean Coffee"
-)
 
-
-page = st.sidebar.radio(
-    "Navigation",
-    [
-        "🏠 Home",
-        "📖 Menu",
-        "🛒 Cart",
-        "💳 Payment",
-        "📝 Signup",
-        "👤 My Account",
-        "📞 Contact",
-        "👨‍💼 Admin"
-        
-    ]
-)
-
-
-st.sidebar.divider()
 
 
 # ==========================================
@@ -1073,10 +1092,10 @@ elif page == "📞 Contact":
 
     st.info("""
 📍 **Address**
-Pune, Maharashtra
+Narhe, Maharashtra
 
 📞 **Phone**
-+91 9876543210
++91 1234567890
 
 📧 **Email**
 brewbean@gmail.com
@@ -1086,9 +1105,13 @@ brewbean@gmail.com
 """)
 
     st.map(pd.DataFrame({
-        "lat": [18.5204],
-        "lon": [73.8567]
+        "lat": [18.191863],
+        "lon": [73.859373]
     }))
+    st.link_button(
+    "📍 Open in Google Maps",
+    "https://maps.google.com/?q=18.191863,73.859373"
+)
         
 # ==========================================
 # ADMIN DASHBOARD
@@ -1346,118 +1369,12 @@ elif page == "👨‍💼 Admin":
 
 
             st.rerun()
-                # ==========================================
-# EDIT / DELETE MENU PRODUCTS
-# ==========================================
-
-        st.divider()
-        st.subheader("✏️ Edit / Delete Menu")
-
-        menu_response = (
-                supabase
-                .table("menu")
-                .select("*")
-                .order("id")
-                .execute()
-            )
-
-        if menu_response.data:
-
-                menu_df = pd.DataFrame(menu_response.data)
-
-                selected = st.selectbox(
-                    "Select Coffee",
-                    menu_df["name"]
-                )
-
-                product = menu_df[
-                    menu_df["name"] == selected
-            ].iloc[0]
-
-                new_name = st.text_input(
-                    "Coffee Name",
-                    value=product["name"]
-                )
-
-                new_price = st.number_input(
-                    "Price",
-                    min_value=1,
-                    value=int(product["price"])
-                )
-
-                new_image = st.file_uploader(
-                    "Change Image (Optional)",
-                    type=["png","jpg","jpeg"],
-                    key="edit_image"
-                )
-
-                col1, col2 = st.columns(2)
-
-    # ===========================
-    # UPDATE
-    # ===========================
-        with col1:
-
-            if st.button("💾 Update Product"):
-
-             image_url = product["image"]
-
-            if new_image is not None:
-
-             file_name = str(uuid.uuid4()) + ".jpg"
-
-             image_bytes = new_image.read()
-
-             supabase.storage \
-            .from_("coffee-images") \
-            .upload(
-                file_name,
-                image_bytes,
-                {
-                    "content-type": "image/jpeg"
-                }
-            )
-
-             image_url = (
-             supabase.storage
-            .from_("coffee-images")
-            .get_public_url(file_name)
-            )
-
-             supabase.table("menu").update({
-
-            "name": new_name,
-            "price": new_price,
-            "image": image_url
-
-            }).eq("id", product["id"]).execute()
-
-            st.success("✅ Product Updated")
-
-            st.rerun()
+          
         
-          # ===========================
-    # DELETE
-    # ===========================
-
-        with col2:
-
-            if st.button("🗑 Delete Product"):
-
-             (
-            supabase
-            .table("menu")
-            .delete()
-            .eq("id", product["id"])
-            .execute()
-            )
-
-            st.success("🗑 Product Deleted")
-            st.rerun()
-
     else:
 
 
          st.error(
             "❌ Admin Login Required"
          )   
+       
